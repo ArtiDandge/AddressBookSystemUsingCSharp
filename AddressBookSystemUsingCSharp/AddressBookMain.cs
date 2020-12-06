@@ -11,7 +11,7 @@ namespace AddressBookSystemUsingCSharp
             string isRepeat = "yes";
             do
             {
-            Console.WriteLine("Choose option to procced further \n1.Add Contact \n2.Edit Contact \n3.Delete Contact \n4.Exit");
+            Console.WriteLine("Choose option to procced further \n1.Add Contact \n2.Edit Contact \n3.Delete Contact \n4.Display Contacts \n5.Exit");
             int choice = Convert.ToInt32(Console.ReadLine());
             
                 switch (choice)
@@ -54,6 +54,9 @@ namespace AddressBookSystemUsingCSharp
                         addressBook.DeleteContact(deletePersonDetails);
                         break;
                     case 4:
+                        addressBook.DisplayContacts();
+                        break;
+                    case 5:
                         isRepeat = "no";
                         break;
                     default:

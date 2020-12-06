@@ -63,5 +63,21 @@ namespace AddressBookSystemUsingCSharp
             }
                 
         }
+        public void DisplayContacts()
+        {
+            foreach (Contacts contact in contactList)
+            {
+                Console.WriteLine("First Name : " + contact.first_name);
+                Console.WriteLine("Last Name : " + contact.last_name);
+                Console.WriteLine("Address : " + contact.address);
+                Console.WriteLine("City : " + contact.city);
+                Console.WriteLine("State : " + contact.state);
+                Console.WriteLine("Zip : " + contact.zip);
+                Console.WriteLine("Phone Number : " + contact.phone_number);
+                Console.WriteLine("Email : " + contact.email);
+            }
+            
+        }
+
     }
 }
