@@ -45,5 +45,23 @@ namespace AddressBookSystemUsingCSharp
                 }
             }
         }
+        public void DeleteContact(string first_name)
+        {
+        
+            foreach (Contacts contact in contactList)
+            {
+                if (first_name.Equals(contact.first_name))
+                {                      
+                    contactList.Remove(contact);
+                    Console.WriteLine("Contact Deleted Successfully !");
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Contact not found with first name '{0}'!", first_name);
+                }
+            }
+                
+        }
     }
 }
