@@ -44,7 +44,7 @@ namespace AddressBookSystemUsingCSharp
                     {
                         Console.WriteLine(k);
                     }
-                    Console.WriteLine("Choose option to procced further \n1.Add Contact \n2.Edit Contact \n3.Delete Contact  \n4.Display Contacts \n5.Search Person \n6.Exit");
+                    Console.WriteLine("Choose option to procced further \n1.Add Contact \n2.Edit Contact \n3.Delete Contact  \n4.Display Contacts \n5.Search Person \n6.View Person \n7.Exit");
                     int choice = Convert.ToInt32(Console.ReadLine());
                     switch (choice)
                     {
@@ -111,11 +111,52 @@ namespace AddressBookSystemUsingCSharp
                                 foreach (var element in listOfPerson)
                                 {
                                     Console.WriteLine("'"+element+"'" + " belongs to '{0}'", findPersonFromPlace);
-                                }                              
-                                                                                           
+                                }                             
                             }                                            
                             break;
                         case 6:
+                            string shouldRepeat = "true";
+                            do
+                            {
+                                Console.WriteLine("How you want to view Prson ? \n1.View By City \n2.View By State \n3.Exit");
+                                int chooseViewPerson = Convert.ToInt32(Console.ReadLine());
+                                switch (chooseViewPerson)
+                                {
+                                    case 1:
+                                        Console.WriteLine("Enter City name whose residents name you want to see");
+                                        string findPersonInCity = Console.ReadLine();
+                                        foreach (var dict in addressBookDict)
+                                        {
+                                            List<String> listOfPersonsinCity = new List<string>();
+                                            listOfPersonsinCity = dict.Value.FindPersonsInCity(findPersonInCity);
+                                            foreach (var name in listOfPersonsinCity)
+                                            {
+                                                Console.WriteLine("{0} belongs to city {1}",name, findPersonInCity);
+                                            }
+                                        }
+                                        break;
+                                    case 2:
+                                        Console.WriteLine("Enter State name whose residents name you want to see");
+                                        string findPersonInState = Console.ReadLine();
+                                        foreach (var dict in addressBookDict)
+                                        {
+                                            List<String> listOfPersonsinState = new List<string>();
+                                            listOfPersonsinState = dict.Value.FindPersonsInState(findPersonInState);
+                                            foreach (var name in listOfPersonsinState)
+                                            {
+                                                Console.WriteLine("{0} belongs to state {1}",name,findPersonInState);
+                                            }
+                                        }
+                                        break;
+                                    case 3:
+                                        shouldRepeat = "false";
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            } while (shouldRepeat.Equals("true"));
+                            break;
+                        case 7:
                             isRepeat = "no";
                             break;
                         default:

@@ -125,7 +125,6 @@ namespace AddressBookSystemUsingCSharp
             List<string> personFounded = new List<string>();
             if (placeExits)
             {
-                
                 foreach (Contacts contact in contactList.FindAll(e => (e.city.Equals(place))).ToList())
                 {
                     string name = contact.first_name + " " + contact.last_name;
@@ -144,13 +143,68 @@ namespace AddressBookSystemUsingCSharp
             }
             else
             {
-                Console.WriteLine("No such city or place exist across any address book with name '{0}'",place);
+                Console.WriteLine("No such city or state exist across any address book with name '{0}'",place);
                 return personFounded;
             }
         }
         public bool isPlaceExist(string place)
         {
             if (this.contactList.Any(e => e.city == place) || this.contactList.Any(e => e.state == place))
+                return true;
+            else
+                return false;
+        }
+
+        public List<String> FindPersonsInCity(string place)
+        {
+            bool isCityExist = IsCityExist(place);
+            List<String> personsFounded = new List<string>();
+            if (isCityExist)
+            {                
+                foreach (Contacts contact in contactList.FindAll(e => (e.city.Equals(place))).ToList())
+                {
+                    string name = contact.first_name + " " + contact.last_name;
+                    personsFounded.Add(name);
+                }
+                return personsFounded;
+            }
+            else
+            {
+                Console.WriteLine("No such city exist across any address book with name '{0}'", place);
+                return personsFounded;
+            }
+        }
+        public bool IsCityExist(string place)
+        {
+            if (this.contactList.Any(e => e.city == place))
+                return true;
+            else
+                return false;
+        }
+
+        public List<String> FindPersonsInState(string place)
+        {
+            bool isStateExist = IsStateExist(place);
+            List<String> personsFounded = new List<string>();
+            if (isStateExist)
+            {
+                foreach (Contacts contact in contactList.FindAll(e => (e.state.Equals(place))).ToList())
+                {
+                    string name = contact.first_name + " " + contact.last_name;
+                    personsFounded.Add(name);
+                }
+                return personsFounded;
+            }
+            else
+            {
+                Console.WriteLine("No such state exist across any address book with name '{0}'", place);
+                return personsFounded;
+            }
+        }
+       
+        public bool IsStateExist(string place)
+        {
+            if (this.contactList.Any(e => e.state == place))
                 return true;
             else
                 return false;
