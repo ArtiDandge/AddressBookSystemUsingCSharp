@@ -119,9 +119,41 @@ namespace AddressBookSystemUsingCSharp
             }
         }
 
-        public void FindPersonByName(string first_name)
+        public List<string> findPerson(string place)
         {
+            bool placeExits = isPlaceExist(place);
+            List<string> personFounded = new List<string>();
+            if (placeExits)
+            {
+                
+                foreach (Contacts contact in contactList.FindAll(e => (e.city.Equals(place))).ToList())
+                {
+                    string name = contact.first_name + " " + contact.last_name;
+                    personFounded.Add(name);
+                }
+                if (personFounded.Count == 0)
+                {
 
+                    foreach (Contacts contact in contactList.FindAll(e => (e.state.Equals(place))).ToList())
+                    {
+                        string name = contact.first_name + " " + contact.last_name;
+                        personFounded.Add(name);
+                    }
+                }
+                return personFounded;
+            }
+            else
+            {
+                Console.WriteLine("No such city or place exist across any address book with name '{0}'",place);
+                return personFounded;
+            }
+        }
+        public bool isPlaceExist(string place)
+        {
+            if (this.contactList.Any(e => e.city == place) || this.contactList.Any(e => e.state == place))
+                return true;
+            else
+                return false;
         }
     }
 }

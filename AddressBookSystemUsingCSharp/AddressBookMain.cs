@@ -7,6 +7,7 @@ namespace AddressBookSystemUsingCSharp
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Address book System ! ");
+            AddressBook address = new AddressBook();
             Dictionary<string, AddressBook> addressBookDict = new Dictionary<string, AddressBook>();
             string isRepeat = "yes";
             bool reLoop = false;
@@ -43,7 +44,7 @@ namespace AddressBookSystemUsingCSharp
                     {
                         Console.WriteLine(k);
                     }
-                    Console.WriteLine("Choose option to procced further \n1.Add Contact \n2.Edit Contact \n3.Delete Contact  \n4.Display Contacts \n5.Find Person by Name \n6.Exit");
+                    Console.WriteLine("Choose option to procced further \n1.Add Contact \n2.Edit Contact \n3.Delete Contact  \n4.Display Contacts \n5.Search Person \n6.Exit");
                     int choice = Convert.ToInt32(Console.ReadLine());
                     switch (choice)
                     {
@@ -100,8 +101,19 @@ namespace AddressBookSystemUsingCSharp
                             string displayContactInAddressBook = Console.ReadLine();
                             addressBookDict[displayContactInAddressBook].DisplayContacts();
                             break;
-                        case 5:
-                            Console.WriteLine("Enter first name of person");
+                        case 5:                          
+                            Console.WriteLine("Enter City OR State ");
+                            string findPersonFromPlace = Console.ReadLine();
+                            foreach (var dict in addressBookDict)
+                            {                                
+                                List<string> listOfPerson = new List<string>();
+                                listOfPerson = dict.Value.findPerson(findPersonFromPlace);
+                                foreach (var element in listOfPerson)
+                                {
+                                    Console.WriteLine("'"+element+"'" + " belongs to '{0}'", findPersonFromPlace);
+                                }                              
+                                                                                           
+                            }                                            
                             break;
                         case 6:
                             isRepeat = "no";
