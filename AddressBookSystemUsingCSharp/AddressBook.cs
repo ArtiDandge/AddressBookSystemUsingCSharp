@@ -15,16 +15,20 @@ namespace AddressBookSystemUsingCSharp
         public void AddContact(string first_name, string LastName, string address, string city, string state, int zip, long phone_number, string email)
         {
             bool duplicate = equals(first_name);
-            if (!duplicate)
+            if (duplicate)
+            {
+                Console.WriteLine("Can not add Contact with duplicate first name. '{0}' is already exit in this address book", first_name);
+            }
+            else
             {
                 Contacts contact = new Contacts(first_name, LastName, address, city, state, zip, phone_number, email);
                 contactList.Add(contact);
                 Console.WriteLine("Contact added Successfully !");
+
             }
-            else
-                Console.WriteLine("Cannot add duplicate Contact first name");
+
         }
-        private bool equals(string first_name)
+        public bool equals(string first_name)
         {
             if (this.contactList.Any(e => e.first_name == first_name))
                 return true;
@@ -113,6 +117,11 @@ namespace AddressBookSystemUsingCSharp
             {
                 Console.WriteLine("This contact address book is empty. First add contact then try Displaying");
             }
+        }
+
+        public void FindPersonByName(string first_name)
+        {
+
         }
     }
 }

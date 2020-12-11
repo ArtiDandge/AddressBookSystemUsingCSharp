@@ -43,7 +43,7 @@ namespace AddressBookSystemUsingCSharp
                     {
                         Console.WriteLine(k);
                     }
-                    Console.WriteLine("Choose option to procced further \n1.Add Contact \n2.Edit Contact \n3.Delete Contact  \n4.Display Contacts \n5.Exit");
+                    Console.WriteLine("Choose option to procced further \n1.Add Contact \n2.Edit Contact \n3.Delete Contact  \n4.Display Contacts \n5.Find Person by Name \n6.Exit");
                     int choice = Convert.ToInt32(Console.ReadLine());
                     switch (choice)
                     {
@@ -101,6 +101,9 @@ namespace AddressBookSystemUsingCSharp
                             addressBookDict[displayContactInAddressBook].DisplayContacts();
                             break;
                         case 5:
+                            Console.WriteLine("Enter first name of person");
+                            break;
+                        case 6:
                             isRepeat = "no";
                             break;
                         default:
