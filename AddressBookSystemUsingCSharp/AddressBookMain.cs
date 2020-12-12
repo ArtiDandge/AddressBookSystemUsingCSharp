@@ -44,7 +44,7 @@ namespace AddressBookSystemUsingCSharp
                     {
                         Console.WriteLine(k);
                     }
-                    Console.WriteLine("Choose option to procced further \n1.Add Contact \n2.Edit Contact \n3.Delete Contact  \n4.Display Contacts \n5.Search Person \n6.View Person \n7.Exit");
+                    Console.WriteLine("Choose option to procced further \n1.Add Contact \n2.Edit Contact \n3.Delete Contact  \n4.Display Contacts \n5.Search Persons \n6.View Persons \n7.Count Persons \n8.Exit");
                     int choice = Convert.ToInt32(Console.ReadLine());
                     switch (choice)
                     {
@@ -131,7 +131,7 @@ namespace AddressBookSystemUsingCSharp
                                             listOfPersonsinCity = dict.Value.FindPersonsInCity(findPersonInCity);
                                             foreach (var name in listOfPersonsinCity)
                                             {
-                                                Console.WriteLine("{0} belongs to city {1}",name, findPersonInCity);
+                                                Console.WriteLine("'{0}' belongs to city '{1}'",name, findPersonInCity);
                                             }
                                         }
                                         break;
@@ -144,7 +144,7 @@ namespace AddressBookSystemUsingCSharp
                                             listOfPersonsinState = dict.Value.FindPersonsInState(findPersonInState);
                                             foreach (var name in listOfPersonsinState)
                                             {
-                                                Console.WriteLine("{0} belongs to state {1}",name,findPersonInState);
+                                                Console.WriteLine("'{0}' belongs to state '{1}'",name,findPersonInState);
                                             }
                                         }
                                         break;
@@ -152,11 +152,60 @@ namespace AddressBookSystemUsingCSharp
                                         shouldRepeat = "false";
                                         break;
                                     default:
+                                        Console.WriteLine("Please enter valid option only");
                                         break;
                                 }
                             } while (shouldRepeat.Equals("true"));
                             break;
                         case 7:
+                            string shouldCountRepeat = "true";
+                            do
+                            {
+                                Console.WriteLine("How you want to count Prson ? \n1.Count By City \n2.Count By State \n3.Exit");
+                                int chooseCountPerson = Convert.ToInt32(Console.ReadLine());
+                                switch (chooseCountPerson)
+                                {
+                                    case 1:
+                                        Console.WriteLine("Enter City name whose resident's Count name you want to see");
+                                        string findPersonInCity = Console.ReadLine();
+                                        int cityCount = 0;
+                                        foreach (var dict in addressBookDict)
+                                        {
+                                            List<String> listOfPersonsinCity = new List<string>();
+                                            listOfPersonsinCity = dict.Value.FindPersonsInCity(findPersonInCity);
+                                            foreach (var name in listOfPersonsinCity)
+                                            {
+                                                cityCount++;
+                                            }
+                                        }
+                                        Console.WriteLine("There is/are {0} number of people belongs to city {1}", cityCount, findPersonInCity);
+                                        break;
+                                    case 2:
+                                        Console.WriteLine("Enter State name whose resident's Count name you want to see");
+                                        string findPersonInState = Console.ReadLine();
+                                        int stateCount = 0;
+                                        foreach (var dict in addressBookDict)
+                                        {
+                                            List<String> listOfPersonsinState = new List<string>();
+                                            listOfPersonsinState = dict.Value.FindPersonsInState(findPersonInState);
+
+                                            foreach (var name in listOfPersonsinState)
+                                            {
+                                                stateCount++;
+                                            }
+                                        }
+                                        Console.WriteLine("There is/are {0} number of people belongs to state {1}", stateCount, findPersonInState);
+                                        break;
+                                    case 3:
+                                        shouldCountRepeat = "false";
+                                        break;
+                                    default:
+                                        Console.WriteLine("Please enter valid option only");
+                                        break;
+                                }
+                            } while (shouldCountRepeat.Equals("true"));
+                            break;
+                        case 8:
                             isRepeat = "no";
                             break;
                         default:
