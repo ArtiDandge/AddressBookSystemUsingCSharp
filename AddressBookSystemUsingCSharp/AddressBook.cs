@@ -188,7 +188,9 @@ namespace AddressBookSystemUsingCSharp
             contactList.Sort(new Comparison<Contacts>((x, y) => string.Compare(x.first_name, y.first_name)));
             foreach (Contacts contact in contactList)
             {
+
                 Console.WriteLine(contact.ToString());
+
             }
         }
 
