@@ -44,7 +44,7 @@ namespace AddressBookSystemUsingCSharp
                     {
                         Console.WriteLine(k);
                     }
-                    Console.WriteLine("Choose option to procced further \n1.Add Contact \n2.Edit Contact \n3.Delete Contact  \n4.Display Contacts \n5.Search Persons \n6.View Persons \n7.Count Persons \n8.Sort Contacts By First Name \n9.Text File Operations \n10.Exit");
+                    Console.WriteLine("Choose option to procced further \n1.Add Contact \n2.Edit Contact \n3.Delete Contact  \n4.Display Contacts \n5.Search Persons \n6.View Persons \n7.Count Persons \n8.Sort Contacts By First Name \n9.File Operations \n10.Exit");
                     int choice = Convert.ToInt32(Console.ReadLine());
                     switch (choice)
                     {
@@ -280,7 +280,7 @@ namespace AddressBookSystemUsingCSharp
                             string isTextFileOperationsRepeat = "true";
                             do
                             {
-                                Console.WriteLine("Which Operation do you want to Perform ? \n1.Write Contacts in Text file \n2.Read Contacts from Text File  \n3.Exit");
+                                Console.WriteLine("Which Operation do you want to Perform ? \n1.Write Contacts in Text file \n2.Read Contacts from Text File  \n3.Write Contacts in CSV file \n4.Read Contacts from CSV file \n5.Exit");
                                 int chooseTextFileOperationOption = Convert.ToInt32(Console.ReadLine());
                                 switch (chooseTextFileOperationOption)
                                 {
@@ -309,6 +309,30 @@ namespace AddressBookSystemUsingCSharp
                                         }
                                         break;
                                     case 3:
+                                        Console.WriteLine("Enter Address Book name where you want to write contact details in csv file");
+                                        string WriteContactsInCSV = Console.ReadLine();
+                                        if (addressBookDict.ContainsKey(WriteContactsInCSV))
+                                        {
+                                            addressBookDict[WriteContactsInCSV].WriteContactsInCSV();
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("No Address book exist with name {0} ", WriteContactsInCSV);
+                                        }
+                                        break;
+                                    case 4:
+                                        Console.WriteLine("Enter Address Book name from which you want to Read Contact details in csv file");
+                                        string ReadContactsFromCSVFile = Console.ReadLine();
+                                        if (addressBookDict.ContainsKey(ReadContactsFromCSVFile))
+                                        {
+                                            addressBookDict[ReadContactsFromCSVFile].ReadContactsFromCSV();
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("No Address book exist with name {0} ", ReadContactsFromCSVFile);
+                                        }
+                                        break;
+                                    case 5:
                                         isTextFileOperationsRepeat = "false";
                                         break;
                                     default:

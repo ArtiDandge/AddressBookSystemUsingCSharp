@@ -230,5 +230,15 @@ namespace AddressBookSystemUsingCSharp
         {
             FileIO.ReadContactsInTxtFile();
         }
+
+        public void WriteContactsInCSV()
+        {
+            FileIO.WriteContactsInCSVFile(contactList);
+        }
+
+        public void ReadContactsFromCSV()
+        {
+            FileIO.ReadContactsInCSVFile();
+        }
     }
 }
