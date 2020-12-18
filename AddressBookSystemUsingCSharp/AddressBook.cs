@@ -185,16 +185,11 @@ namespace AddressBookSystemUsingCSharp
 
         public void SortContactsInAddressBookByFirstName()
         {
-            List<string> sortedContactList = new List<string>();
+            contactList.Sort(new Comparison<Contacts>((x, y) => string.Compare(x.first_name, y.first_name)));
             foreach (Contacts contact in contactList)
             {
-                string sort = contact.ToString();
-                sortedContactList.Add(sort);
-            }
-            sortedContactList.Sort();
-            foreach (string sortedEntry in sortedContactList)
-            {
-                Console.WriteLine(sortedEntry);
+                Console.WriteLine("\n--------------------------------------"+"\nPerson Details: \nFirst name: " + contact.first_name + " \nLast name: " + contact.last_name + " \nAddress: " + contact.address + " \nCity: " + contact.city + " \nState: "
+                    + contact.state + " \nZip:" + contact.zip + " \nPhone Number:" + contact.phone_number + " \nEmail:" + contact.email + "\n--------------------------------------");
             }
         }
 
