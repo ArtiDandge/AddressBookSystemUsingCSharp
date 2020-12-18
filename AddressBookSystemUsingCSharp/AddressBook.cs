@@ -220,5 +220,15 @@ namespace AddressBookSystemUsingCSharp
                 Console.WriteLine(contact.ToString());
             }
         }
+
+        public void WriteContactsInTxtFile()
+        {
+            FileIO.WriteContactsInTxtFile(contactList);
+        }
+
+        public void ReadContactsInTxtFile()
+        {
+            FileIO.ReadContactsInTxtFile();
+        }
     }
 }

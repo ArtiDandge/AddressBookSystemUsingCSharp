@@ -44,7 +44,7 @@ namespace AddressBookSystemUsingCSharp
                     {
                         Console.WriteLine(k);
                     }
-                    Console.WriteLine("Choose option to procced further \n1.Add Contact \n2.Edit Contact \n3.Delete Contact  \n4.Display Contacts \n5.Search Persons \n6.View Persons \n7.Count Persons \n8.Sort Contacts By First Name \n9.Exit");
+                    Console.WriteLine("Choose option to procced further \n1.Add Contact \n2.Edit Contact \n3.Delete Contact  \n4.Display Contacts \n5.Search Persons \n6.View Persons \n7.Count Persons \n8.Sort Contacts By First Name \n9.Text File Operations \n10.Exit");
                     int choice = Convert.ToInt32(Console.ReadLine());
                     switch (choice)
                     {
@@ -277,6 +277,48 @@ namespace AddressBookSystemUsingCSharp
                             } while (isSortRepeat.Equals("true"));
                             break;
                         case 9:
+                            string isTextFileOperationsRepeat = "true";
+                            do
+                            {
+                                Console.WriteLine("Which Operation do you want to Perform ? \n1.Write Contacts in Text file \n2.Read Contacts from Text File  \n3.Exit");
+                                int chooseTextFileOperationOption = Convert.ToInt32(Console.ReadLine());
+                                switch (chooseTextFileOperationOption)
+                                {
+                                    case 1:
+                                        Console.WriteLine("Enter Address Book name where you want to write contact details");
+                                        string WriteContacts = Console.ReadLine();
+                                        if (addressBookDict.ContainsKey(WriteContacts))
+                                        {
+                                           addressBookDict[WriteContacts].WriteContactsInTxtFile();
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("No Address book exist with name {0} ", WriteContacts);
+                                        }
+                                        break;
+                                    case 2:
+                                        Console.WriteLine("Enter Address Book name from which you want to Read Contact details");
+                                        string ReadContacts = Console.ReadLine();
+                                        if (addressBookDict.ContainsKey(ReadContacts))
+                                        {
+                                            addressBookDict[ReadContacts].ReadContactsInTxtFile();
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("No Address book exist with name {0} ", ReadContacts);
+                                        }
+                                        break;
+                                    case 3:
+                                        isTextFileOperationsRepeat = "false";
+                                        break;
+                                    default:
+                                        Console.WriteLine("Please enter valid option only");
+                                        break;
+                                }
+
+                            } while (isTextFileOperationsRepeat.Equals("true"));
+                            break;
+                        case 10:
                             isRepeat = "no";
                             break;
                         default:
