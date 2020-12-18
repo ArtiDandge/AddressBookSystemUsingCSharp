@@ -206,17 +206,75 @@ namespace AddressBookSystemUsingCSharp
                             } while (shouldCountRepeat.Equals("true"));
                             break;
                         case 8:
-                            Console.WriteLine("Enter Address Book name to sort contacts");
-                            string sortContactInAddressBook = Console.ReadLine();
-                            if (addressBookDict.ContainsKey(sortContactInAddressBook))
+                            string isSortRepeat = "true";
+                            do
                             {
-                                Console.WriteLine("\nFollowing are the Sorted Contacts based on First Name");
-                                addressBookDict[sortContactInAddressBook].SortContactsInAddressBookByFirstName();
-                            }
-                            else
-                            {
-                                Console.WriteLine("No Address book exist with name {0} ", sortContactInAddressBook);
-                            }
+                                Console.WriteLine("How you want to Sort Person's Details ? \n1.Sort By First Name \n2.Sort By City \n3.Sort By State \n4.Sort By Zip \n5.Exit");
+                                int chooseSortOption = Convert.ToInt32(Console.ReadLine());
+                                switch (chooseSortOption)
+                                {
+                                    case 1:
+                                        Console.WriteLine("Enter Address Book name to sort contacts based on First Name");
+                                        string sortContactInAddressBook = Console.ReadLine();
+                                        if (addressBookDict.ContainsKey(sortContactInAddressBook))
+                                        {
+                                            Console.WriteLine("\nFollowing are the Sorted Contacts based on First Name");
+                                            addressBookDict[sortContactInAddressBook].SortContactsInAddressBookByFirstName();
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("No Address book exist with name {0} ", sortContactInAddressBook);
+                                        }
+                                        break;
+                                    case 2:
+                                        Console.WriteLine("Enter Address Book name to sort contacts based on City Name");
+                                        string sortContactByCity = Console.ReadLine();
+                                        if (addressBookDict.ContainsKey(sortContactByCity))
+                                        {
+                                            Console.WriteLine("\nFollowing are the Sorted Contacts based on City Name");
+                                            addressBookDict[sortContactByCity].SortContactsInAddressBookByCity();
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("No Address book exist with name {0} ", sortContactByCity);
+                                        }
+                                        break;
+                                    case 3:
+                                        Console.WriteLine("Enter Address Book name to sort contacts based on State Name");
+                                        string sortContactByState = Console.ReadLine();
+                                        if (addressBookDict.ContainsKey(sortContactByState))
+                                        {
+                                            Console.WriteLine("\nFollowing are the Sorted Contacts based on State Name");
+                                            addressBookDict[sortContactByState].SortContactsInAddressBookByState();
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("No Address book exist with name {0} ", sortContactByState);
+                                        }
+                                        break;
+                                    case 4:
+                                        Console.WriteLine("Enter Address Book name to sort contacts based on Zip");
+                                        string sortContactByZip = Console.ReadLine();
+                                        if (addressBookDict.ContainsKey(sortContactByZip))
+                                        {
+                                            Console.WriteLine("\nFollowing are the Sorted Contacts based on Zip");
+                                            addressBookDict[sortContactByZip].SortContactsInAddressBookByZip();
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("No Address book exist with name {0} ", sortContactByZip);
+                                        }
+                                        break;
+                                    case 5:
+                                        isSortRepeat = "false";
+                                        break;
+                                    default:
+                                        Console.WriteLine("Please enter valid option only");
+                                        break;
+
+                                }
+
+                            } while (isSortRepeat.Equals("true"));
                             break;
                         case 9:
                             isRepeat = "no";
