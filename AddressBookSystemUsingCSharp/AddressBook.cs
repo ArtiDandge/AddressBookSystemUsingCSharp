@@ -103,6 +103,7 @@ namespace AddressBookSystemUsingCSharp
         {
             if (contactList.Count() > 0)
             {
+                Console.WriteLine("\n--------------------------------------");
                 foreach (Contacts contact in contactList)
                 {
                     Console.WriteLine("First Name : " + contact.first_name);
@@ -114,6 +115,7 @@ namespace AddressBookSystemUsingCSharp
                     Console.WriteLine("Phone Number : " + contact.phone_number);
                     Console.WriteLine("Email : " + contact.email);
                 }
+                Console.WriteLine("\n--------------------------------------");
             }
             else
             {
@@ -180,6 +182,21 @@ namespace AddressBookSystemUsingCSharp
             }
             return personsFounded;            
         }
-       
+
+        public void SortContactsInAddressBookByFirstName()
+        {
+            List<string> sortedContactList = new List<string>();
+            foreach (Contacts contact in contactList)
+            {
+                string sort = contact.ToString();
+                sortedContactList.Add(sort);
+            }
+            sortedContactList.Sort();
+            foreach (string sortedEntry in sortedContactList)
+            {
+                Console.WriteLine(sortedEntry);
+            }
+        }
+
     }
 }

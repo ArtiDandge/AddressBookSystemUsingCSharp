@@ -23,11 +23,12 @@ namespace AddressBookSystemUsingCSharp
             this.phone_number = phone_number;
             this.email = email;
         }
-        public string tostring()
+
+        public override string ToString()
         {
 
-            return "Person Details: \tFirst name:" + this.first_name + " \tLast name:" + this.last_name + " \t Address:" + this.address + " \tCity:" + this.city + " \tState:"
-                    + this.state + " \tZip:" + this.zip + " \tPhone Number:" + this.phone_number + " \tEmail:" + this.email;
+            return "\n--------------------------------------"+"\nPerson Details: \nFirst name:" + this.first_name + " \nLast name:" + this.last_name + " \nAddress:" + this.address + " \nCity:" + this.city + " \nState:"
+                    + this.state + " \nZip:" + this.zip + " \nPhone Number:" + this.phone_number + " \nEmail:" + this.email+"\n--------------------------------------";
         }
     }
 }
