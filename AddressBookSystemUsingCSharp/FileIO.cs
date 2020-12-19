@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+
 
 namespace AddressBookSystemUsingCSharp
 {
@@ -9,6 +11,7 @@ namespace AddressBookSystemUsingCSharp
     {
         static String TextFilePath = @"C:\Users\HP\source\repos\AddressBookSystemUsingCSharp\AddressBookSystemUsingCSharp\TextFile1.txt";
         static String CSVFilePath = @"C:\Users\HP\source\repos\AddressBookSystemUsingCSharp\AddressBookSystemUsingCSharp\CSVFile1.csv";
+        static String JSONFilePath = @"C:\Users\HP\source\repos\AddressBookSystemUsingCSharp\AddressBookSystemUsingCSharp\jsconfig1.json";
         public static void WriteContactsInTxtFile(List<Contacts> contacts)
         {
             if (File.Exists(TextFilePath))
@@ -55,7 +58,7 @@ namespace AddressBookSystemUsingCSharp
                 {
                     foreach (Contacts contact in contacts)
                     {
-                        streamWriter.WriteLine(contact.first_name+","+contact.last_name+","+","+contact.address+","+","+contact.city+","+","+contact.state+","+contact.zip+","+contact.phone_number+","+contact.email);
+                        streamWriter.WriteLine(contact.first_name+","+contact.last_name+","+","+contact.address+","+contact.city+","+contact.state+","+contact.zip+","+contact.phone_number+","+contact.email);
                     }
                     streamWriter.Close();
                 }
@@ -86,5 +89,42 @@ namespace AddressBookSystemUsingCSharp
                 Console.WriteLine("No such file exists");
             }
         }
+
+        public static void WriteContactsInJSONFile(List<Contacts> contacts)
+        {
+            if (File.Exists(JSONFilePath))
+            {
+                JsonSerializer jsonSerializer = new JsonSerializer();
+                using (StreamWriter streamWriter = new StreamWriter(JSONFilePath))
+                using (JsonWriter writer = new JsonTextWriter(streamWriter))
+                {
+                    jsonSerializer.Serialize(writer, contacts);
+                }
+                Console.WriteLine("Writting Contacts to the JSON file is Complete !");
+            }
+            else
+            {
+                Console.WriteLine("No such file exists");
+            }
+        }
+
+        public static void ReadContactsFromJSONFile()
+        {
+            if (File.Exists(JSONFilePath))
+            {
+                IList<Contacts> contactsRead = JsonConvert.DeserializeObject<IList<Contacts>>(File.ReadAllText(JSONFilePath));
+                foreach (Contacts contact in contactsRead)
+                {
+                    Console.Write(contact.ToString());
+                }
+
+
+            }
+            else
+            {
+                Console.WriteLine("No such file exists");
+            }
+        }
+
     }
 }

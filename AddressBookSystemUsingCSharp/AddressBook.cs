@@ -240,5 +240,15 @@ namespace AddressBookSystemUsingCSharp
         {
             FileIO.ReadContactsInCSVFile();
         }
+
+        public void WriteContactsInJSONFile()
+        {
+            FileIO.WriteContactsInJSONFile(contactList);
+        }
+
+        public void ReadContactsFronJSON()
+        {
+            FileIO.ReadContactsFromJSONFile();
+        }
     }
 }

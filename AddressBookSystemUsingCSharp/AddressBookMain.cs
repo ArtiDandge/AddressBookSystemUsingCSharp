@@ -7,7 +7,6 @@ namespace AddressBookSystemUsingCSharp
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Address book System ! ");
-            AddressBook address = new AddressBook();
             Dictionary<string, AddressBook> addressBookDict = new Dictionary<string, AddressBook>();
             string isRepeat = "yes";
             bool reLoop = false;
@@ -280,7 +279,7 @@ namespace AddressBookSystemUsingCSharp
                             string isTextFileOperationsRepeat = "true";
                             do
                             {
-                                Console.WriteLine("Which Operation do you want to Perform ? \n1.Write Contacts in Text file \n2.Read Contacts from Text File  \n3.Write Contacts in CSV file \n4.Read Contacts from CSV file \n5.Exit");
+                                Console.WriteLine("Which Operation do you want to Perform ? \n1.Write Contacts in Text file \n2.Read Contacts from Text File  \n3.Write Contacts in CSV file \n4.Read Contacts from CSV file \n5.Write Contacts in JSON file \n6.Read Contacts from JSon File \n7.Exit");
                                 int chooseTextFileOperationOption = Convert.ToInt32(Console.ReadLine());
                                 switch (chooseTextFileOperationOption)
                                 {
@@ -333,6 +332,30 @@ namespace AddressBookSystemUsingCSharp
                                         }
                                         break;
                                     case 5:
+                                        Console.WriteLine("Enter Address Book name where you want to write contact details in json file");
+                                        string WriteContactsInJSON = Console.ReadLine();
+                                        if (addressBookDict.ContainsKey(WriteContactsInJSON))
+                                        {
+                                            addressBookDict[WriteContactsInJSON].WriteContactsInJSONFile();
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("No Address book exist with name {0} ", WriteContactsInJSON);
+                                        }
+                                        break;
+                                    case 6:
+                                        Console.WriteLine("Enter Address Book name from which you want to Read Contact details in json file");
+                                        string ReadContactsFromJSONFile = Console.ReadLine();
+                                        if (addressBookDict.ContainsKey(ReadContactsFromJSONFile))
+                                        {
+                                            addressBookDict[ReadContactsFromJSONFile].ReadContactsFronJSON();
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("No Address book exist with name {0} ", ReadContactsFromJSONFile);
+                                        }
+                                        break;
+                                    case 7:
                                         isTextFileOperationsRepeat = "false";
                                         break;
                                     default:
