@@ -14,6 +14,7 @@ namespace AddressBookSystemUsingCSharp
         {
             this.contactList = new List<Contacts>();
         }
+
         public void AddContact(string first_name, string LastName, string address, string city, string state, int zip, long phone_number, string email)
         {
             bool duplicate = equals(first_name);
@@ -30,6 +31,7 @@ namespace AddressBookSystemUsingCSharp
             }
 
         }
+
         public bool equals(string first_name)
         {
             if (this.contactList.Any(e => e.first_name == first_name))
@@ -37,6 +39,7 @@ namespace AddressBookSystemUsingCSharp
             else
                 return false;
         }
+
         public void EditContact(string first_name)
         {
             if (contactList.Count() > 0)
@@ -74,6 +77,7 @@ namespace AddressBookSystemUsingCSharp
                 Console.WriteLine("This contact address book is empty. First add contact then try Editing");
             }
         }
+
         public void DeleteContact(string first_name)
         {
             if (contactList.Count() > 0)
@@ -99,6 +103,7 @@ namespace AddressBookSystemUsingCSharp
                 Console.WriteLine("This contact address book is empty. First add contact then try Deleting");
             }
         }
+
         public void DisplayContacts()
         {
             if (contactList.Count() > 0)
@@ -150,6 +155,7 @@ namespace AddressBookSystemUsingCSharp
                 return personFounded;
             }
         }
+
         public bool isPlaceExist(string place)
         {
             if (contactList.Any(x => x.city == place) || contactList.Any(x => x.state == place))
@@ -159,17 +165,16 @@ namespace AddressBookSystemUsingCSharp
         }
 
         public List<String> FindPersonsInCity(string isCity)
-        {
-            
+        {            
             List<String> personsFounded = new List<string>();
             foreach (Contacts contact in contactList.FindAll(e => (e.city.Equals(isCity))).ToList())
             {
                 string name = contact.first_name + " " + contact.last_name;
                 personsFounded.Add(name);
             }
-            return personsFounded;
-            
+            return personsFounded;            
         }
+
         public List<String> FindPersonsInState(string isState)
         {           
             List<String> personsFounded = new List<string>();
@@ -188,9 +193,7 @@ namespace AddressBookSystemUsingCSharp
             contactList.Sort(new Comparison<Contacts>((x, y) => string.Compare(x.first_name, y.first_name)));
             foreach (Contacts contact in contactList)
             {
-
                 Console.WriteLine(contact.ToString());
-
             }
         }
 

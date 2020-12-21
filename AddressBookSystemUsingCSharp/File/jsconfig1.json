@@ -1,0 +1,33 @@
+[
+  {
+    "first_name": "Puja ",
+    "last_name": "Vibhute",
+    "address": "Swargate",
+    "city": "Pune",
+    "state": "MH",
+    "zip": 411004,
+    "phone_number": 8232343455,
+    "email": "vibhute@gmail.com"
+  },
+  {
+    "first_name": "Arti",
+    "last_name": "Dandge",
+    "address": "Ashish Plaza ",
+    "city": "Pune",
+    "state": "MH",
+    "zip": 411048,
+    "phone_number": 9034348843,
+    "email": "asd@yahoo.com"
+  },
+  {
+    "first_name": "Rama",
+    "last_name": "Magare",
+    "address": "Beed",
+    "city": "Beed",
+    "state": "MH",
+    "zip": 413004,
+    "phone_number": 9527353477,
+    "email": "rmd@yahoo.com"
+  }
+
+]

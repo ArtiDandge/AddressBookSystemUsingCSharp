@@ -4,14 +4,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-
 namespace AddressBookSystemUsingCSharp
 {
     public class FileIO
     {
-        static String TextFilePath = @"C:\Users\HP\source\repos\AddressBookSystemUsingCSharp\AddressBookSystemUsingCSharp\TextFile1.txt";
-        static String CSVFilePath = @"C:\Users\HP\source\repos\AddressBookSystemUsingCSharp\AddressBookSystemUsingCSharp\CSVFile1.csv";
-        static String JSONFilePath = @"C:\Users\HP\source\repos\AddressBookSystemUsingCSharp\AddressBookSystemUsingCSharp\jsconfig1.json";
+        static String TextFilePath = @"C:\Users\HP\source\repos\AddressBookSystemUsingCSharp\AddressBookSystemUsingCSharp\File\TextFile1.txt";
+        static String CSVFilePath = @"C:\Users\HP\source\repos\AddressBookSystemUsingCSharp\AddressBookSystemUsingCSharp\File\CSVFile1.csv";
+        static String JSONFilePath = @"C:\Users\HP\source\repos\AddressBookSystemUsingCSharp\AddressBookSystemUsingCSharp\File\jsconfig1.json";
         public static void WriteContactsInTxtFile(List<Contacts> contacts)
         {
             if (File.Exists(TextFilePath))
@@ -117,14 +116,11 @@ namespace AddressBookSystemUsingCSharp
                 {
                     Console.Write(contact.ToString());
                 }
-
-
             }
             else
             {
                 Console.WriteLine("No such file exists");
             }
         }
-
     }
 }

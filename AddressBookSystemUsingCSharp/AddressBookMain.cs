@@ -32,13 +32,12 @@ namespace AddressBookSystemUsingCSharp
 
                 }
             } while (reLoop != true);
+
             do
             {
-
                 try
                 {
                     Console.WriteLine("You have created following Address Books");
-
                     foreach (string k in addressBookDict.Keys)
                     {
                         Console.WriteLine(k);
@@ -270,7 +269,6 @@ namespace AddressBookSystemUsingCSharp
                                     default:
                                         Console.WriteLine("Please enter valid option only");
                                         break;
-
                                 }
 
                             } while (isSortRepeat.Equals("true"));
@@ -279,7 +277,7 @@ namespace AddressBookSystemUsingCSharp
                             string isTextFileOperationsRepeat = "true";
                             do
                             {
-                                Console.WriteLine("Which Operation do you want to Perform ? \n1.Write Contacts in Text file \n2.Read Contacts from Text File  \n3.Write Contacts in CSV file \n4.Read Contacts from CSV file \n5.Write Contacts in JSON file \n6.Read Contacts from JSon File \n7.Exit");
+                                Console.WriteLine("\nWhich Operation do you want to Perform ? \n1.Write Contacts in Text file \n2.Read Contacts from Text File  \n3.Write Contacts in CSV file \n4.Read Contacts from CSV file \n5.Write Contacts in JSON file \n6.Read Contacts from JSon File \n7.Exit");
                                 int chooseTextFileOperationOption = Convert.ToInt32(Console.ReadLine());
                                 switch (chooseTextFileOperationOption)
                                 {
@@ -362,7 +360,6 @@ namespace AddressBookSystemUsingCSharp
                                         Console.WriteLine("Please enter valid option only");
                                         break;
                                 }
-
                             } while (isTextFileOperationsRepeat.Equals("true"));
                             break;
                         case 10:
@@ -379,6 +376,7 @@ namespace AddressBookSystemUsingCSharp
                 }
             } while (isRepeat.Equals("yes"));
         }
+
         public static void takeInput(AddressBook addressBook)
         {
             try
@@ -400,7 +398,6 @@ namespace AddressBookSystemUsingCSharp
                 Console.WriteLine("Enter Email id :");
                 string email = Console.ReadLine();
                 addressBook.AddContact(firstName, lastName, address, city, state, zip, phoneNumber, email);
-
             }
             catch (Exception)
             {
