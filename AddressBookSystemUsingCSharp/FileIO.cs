@@ -8,9 +8,9 @@ namespace AddressBookSystemUsingCSharp
 {
     public class FileIO
     {
-        static String TextFilePath = @"C:\Users\HP\source\repos\AddressBookSystemUsingCSharp\AddressBookSystemUsingCSharp\File\TextFile1.txt";
-        static String CSVFilePath = @"C:\Users\HP\source\repos\AddressBookSystemUsingCSharp\AddressBookSystemUsingCSharp\File\CSVFile1.csv";
-        static String JSONFilePath = @"C:\Users\HP\source\repos\AddressBookSystemUsingCSharp\AddressBookSystemUsingCSharp\File\jsconfig1.json";
+        static String TextFilePath = @"C:\Users\HP\source\repos\AddressBookSystemUsingCSharp\AddressBookSystemUsingCSharp\File\TextFile.txt";
+        static String CSVFilePath = @"C:\Users\HP\source\repos\AddressBookSystemUsingCSharp\AddressBookSystemUsingCSharp\File\CSVFile.csv";
+        static String JSONFilePath = @"C:\Users\HP\source\repos\AddressBookSystemUsingCSharp\AddressBookSystemUsingCSharp\File\JSONFile.json";
         public static void WriteContactsInTxtFile(List<Contacts> contacts)
         {
             if (File.Exists(TextFilePath))
