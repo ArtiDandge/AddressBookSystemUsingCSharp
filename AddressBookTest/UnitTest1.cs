@@ -72,7 +72,7 @@ namespace AddressBookTest
             AddressBookDatabase database = new AddressBookDatabase();
             AddressBookModel model = new AddressBookModel()
             {
-                first_name = "Ranjeet",
+                first_name = "Rama",
                 last_name = "Mortule",
                 phone_number = "9866345545",
                 email = "motule@gmail.com",
@@ -80,7 +80,7 @@ namespace AddressBookTest
                 addressbook_type_id = 2,
                 addressbook_name_id = 2
             };
-            bool result = database.AddNewContact(model);
+            bool result = database.UpdateContact(model);
             Assert.AreEqual(expectedResult, result);
         }
 
