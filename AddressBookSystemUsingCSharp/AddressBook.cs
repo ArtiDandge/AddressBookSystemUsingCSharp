@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AddressBookSystemUsingCSharp
 {
-    class AddressBook:IAddressBook
+    public class AddressBook:IAddressBook
     {
         List<Contacts> contactList;
         public static int personsCountInCity = 0;
