@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Text;
 
@@ -48,11 +49,98 @@ namespace AddressBookSystemUsingCSharp
                             Console.WriteLine("{0}, {1}, {2}, {4}, {5}, {6}, {7}, {8}, {9}", addressBookModel.person_id, addressBookModel.first_name, addressBookModel.last_name,
                                 addressBookModel.phone_number, addressBookModel.email, addressBookModel.city_name, addressBookModel.zip, addressBookModel.state_name, addressBookModel.addressbook_type, addressBookModel.addressbook_name);
                         }
+                        Console.WriteLine("New Contact Added Successfully");
                         sqlDataReader.Close();
                     }
                    connection.Close();
                 }
                 return Count;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public bool AddNewContact(AddressBookModel model)
+        {
+            try
+            {
+                using(SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand command = new SqlCommand("AddNewContact", connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@first_name", model.first_name);
+                    command.Parameters.AddWithValue("@last_name", model.last_name);
+                    command.Parameters.AddWithValue("@phone_number",model.phone_number);
+                    command.Parameters.AddWithValue("@email", model.email);
+                    command.Parameters.AddWithValue("@city_state_mapping_id", model.cityAndStateMappingId);
+                    command.Parameters.AddWithValue("@addressbook_type_id", model.addressbook_type_id);
+                    command.Parameters.AddWithValue("@addressboon_name_id", model.addressbook_name_id);
+
+                    connection.Open();
+                    var result = command.ExecuteNonQuery();
+                    connection.Close();
+                    if (result == 0)
+                    {
+                        return false;
+                    }
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public bool UpdateContact(AddressBookModel model)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand command = new SqlCommand("UpdateContact", connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@last_name", model.last_name);
+                    command.Parameters.AddWithValue("@phone_number", model.phone_number);
+                    command.Parameters.AddWithValue("@email", model.email);
+                    connection.Open();
+                    var result = command.ExecuteNonQuery();
+                    Console.WriteLine("Contact Updated Successfully !");
+                    connection.Close();
+                    if (result == 0)
+                    {
+                        return false;
+                    }
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public bool DeleteCotact(AddressBookModel model)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand command = new SqlCommand("DeleteContact", connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@first_name", model.first_name);
+                    connection.Open();
+                    var result = command.ExecuteNonQuery();
+                    Console.WriteLine("Contact Deleted Successfully !");
+                    connection.Close();
+                    if (result == 0)
+                    {
+                        return false;
+                    }
+                    return true;
+                }
             }
             catch (Exception e)
             {

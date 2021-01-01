@@ -12,18 +12,32 @@ namespace AddressBookSystemUsingCSharp
             {
                 do
                 {
-                    Console.WriteLine("\nHow do you you like to continue ? \n1.Continue Without Database \n2.Continue with Database \n3.Exit");
+                    Console.WriteLine("\nHow do you you like to continue ? \n1.Retrieve Contacts from Database \n2.Add New Contact to Database \n3.Continue Without Database \n4.Exit");
                     int choiceToContinue = Convert.ToInt32(Console.ReadLine());
                     switch (choiceToContinue)
                     {
                         case 1:
-                            AddressBookCoreOperations.AddressBookCore();
-                            break;
-                        case 2:
                             AddressBookDatabase database = new AddressBookDatabase();
                             database.GetPersonDetailsfromDatabase();
                             break;
+                        case 2:
+                            AddressBookDatabase database1 = new AddressBookDatabase();
+                            AddressBookModel model = new AddressBookModel()
+                            {
+                                first_name = "Sagar",
+                                last_name = "Dandge",
+                                phone_number = "7535345545",
+                                email = "sagar1234@gmail.com",
+                                cityAndStateMappingId = 4,
+                                addressbook_type_id = 1,
+                                addressbook_name_id = 1
+                            };
+                            database1.AddNewContact(model);
+                            break;
                         case 3:
+                            AddressBookCoreOperations.AddressBookCore();
+                            break;
+                        case 4:
                             isRepeate = "No";
                             break;
                         default:
