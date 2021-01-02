@@ -133,5 +133,28 @@ namespace AddressBookTest
             int result = database.RetriveContactByCityOrState(model);
             Assert.AreEqual(expectedResult, result);
         }
+
+        /// <summary>
+        ///Ability to Insert new Contact to the database
+        /// </summary>
+        [TestMethod]
+        public void GivenQuery_WhenInsert_ShouldAddNewContactToDB()
+        {
+            bool expectedResult = true;
+            AddressBookDatabase database = new AddressBookDatabase();
+            AddressBookModel model = new AddressBookModel()
+            {
+                first_name = "Snehal",
+                last_name = "Chaudhari",
+                phone_number = "8666345545",
+                email = "shenal234@gmail.com",
+                cityAndStateMappingId = 8,
+                addressbook_type_id = 2,
+                addressbook_name_id = 2,
+                date_added = new DateTime(2018, 12, 22)
+            };
+            bool result = database.AddNewContact(model);
+            Assert.AreEqual(expectedResult, result);
+        }
     }
 }
