@@ -116,5 +116,22 @@ namespace AddressBookTest
             int result = database.RetrievePerticularContact(model);
             Assert.AreEqual(expectedResult, result);
         }
+
+        /// <summary>
+        /// Retrive Contacts from DB By City Or State
+        /// </summary>
+        [TestMethod]
+        public void GivenQuery_WhenRetrieveByCityOrState_ShouldRetrievContactAndReturnNoOfCounts()
+        {
+            int expectedResult = 4;
+            AddressBookDatabase database = new AddressBookDatabase();
+            AddressBookModel model = new AddressBookModel()
+            {
+                city_name = "Pune",
+                state_name = "Maharashtra"
+            };
+            int result = database.RetriveContactByCityOrState(model);
+            Assert.AreEqual(expectedResult, result);
+        }
     }
 }
