@@ -1,4 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using AddressBookSystemUsingCSharp;
 
 namespace AddressBookTest
@@ -97,6 +98,22 @@ namespace AddressBookTest
                 first_name = "Arti",
             };
             bool result = database.DeleteCotact(model);
+            Assert.AreEqual(expectedResult, result);
+        }
+
+        /// <summary>
+        /// Retrive Contacts from perticular date to today
+        /// </summary>
+        [TestMethod]
+        public void GivenQuery_WhenRetrieveInPerticulatDateRange_ShouldRetrievContactAndReturnNoOfCounts()
+        {
+            int expectedResult = 6;
+            AddressBookDatabase database = new AddressBookDatabase();
+            AddressBookModel model = new AddressBookModel()
+            {
+                date_added = new DateTime(2016, 01, 01)
+            };
+            int result = database.RetrievePerticularContact(model);
             Assert.AreEqual(expectedResult, result);
         }
     }

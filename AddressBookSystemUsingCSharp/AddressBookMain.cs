@@ -12,7 +12,7 @@ namespace AddressBookSystemUsingCSharp
             {
                 do
                 {
-                    Console.WriteLine("\nHow do you you like to continue ? \n1.Retrieve Contacts from Database \n2.Add New Contact to Database \n3.Update Contact \n4.Continue Without Database \n5.Exit");
+                    Console.WriteLine("\nHow do you you like to continue ? \n1.Retrieve Contacts from Database \n2.Add New Contact to Database \n3.Update Contact \n4.Retrieve Contact Between Perticular Date Range \n5.Continue Without Database \n6.Exit");
                     int choiceToContinue = Convert.ToInt32(Console.ReadLine());
                     switch (choiceToContinue)
                     {
@@ -58,9 +58,17 @@ namespace AddressBookSystemUsingCSharp
                             updateDB.UpdateContact(updateModel);
                             break;
                         case 4:
-                            AddressBookCoreOperations.AddressBookCore();
+                            AddressBookDatabase addressBook = new AddressBookDatabase();
+                            AddressBookModel bookModel = new AddressBookModel();
+                            Console.WriteLine("Enter Date from which you want to see contact add ");
+                            DateTime date = Convert.ToDateTime(Console.ReadLine());
+                            bookModel.date_added = date;
+                            addressBook.RetrievePerticularContact(bookModel);
                             break;
                         case 5:
+                            AddressBookCoreOperations.AddressBookCore();
+                            break;
+                        case 6:
                             isRepeate = "No";
                             break;
                         default:

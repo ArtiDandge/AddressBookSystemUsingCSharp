@@ -19,5 +19,6 @@ namespace AddressBookSystemUsingCSharp
         public string state_name { get; set; }
         public string addressbook_type { get; set; }
         public string addressbook_name { get; set; }
+        public DateTime date_added { get; set; }
     }
 }
