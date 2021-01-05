@@ -80,7 +80,7 @@ namespace AddressBookSystemUsingCSharp
                     command.Parameters.AddWithValue("@date_added", model.date_added);
                     connection.Open();
                     var result = command.ExecuteNonQuery();
-                    Console.WriteLine("New Contact Added Successfully");
+                    Console.WriteLine("New Contact Added Successfully !");
                     connection.Close();
                     if (result == 0)
                     {
