@@ -1,23 +1,4 @@
 {
-<<<<<<< HEAD
-  "posts": [
-    {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
-=======
   "Contacts": [
     {
       "id": 1,
@@ -73,7 +54,50 @@
       "phone_number": "400055",
       "email": "priya@gmail.com",
       "id": 5
+    },
+    {
+      "first_name": "Shirin",
+      "last_name": "CHouksi",
+      "address": "Pune",
+      "city": "Pune",
+      "state": "MH",
+      "zip": 400040,
+      "phone_number": 755454533,
+      "email": "shirin@gmail.com",
+      "id": 6
+    },
+    {
+      "first_name": "Neha",
+      "last_name": "Parkar",
+      "address": "Jaipur",
+      "city": "Jaipur",
+      "state": "MP",
+      "zip": 344040,
+      "phone_number": 6755454533,
+      "email": "neha@gmail.com",
+      "id": 7
+    },
+    {
+      "first_name": "Damini",
+      "last_name": "Kasi",
+      "address": "Jodhpur",
+      "city": "Jodhpur",
+      "state": "MP",
+      "zip": 430040,
+      "phone_number": 8755454533,
+      "email": "damini@gmail.com",
+      "id": 8
+    },
+    {
+      "first_name": "Reena",
+      "last_name": "Pal",
+      "address": "Mumbai",
+      "city": "Mumbai",
+      "state": "MH",
+      "zip": 400001,
+      "phone_number": 8855454533,
+      "email": "reena@gmail.com",
+      "id": 9
     }
   ]
->>>>>>> cb56f2ec3202ea2f425548e96c7335dc58a4da0d
 }
