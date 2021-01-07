@@ -34,28 +34,6 @@
       "id": 3
     },
     {
-      "id": 4,
-      "first_name": "Sita",
-      "last_name": "Raman",
-      "address": "Goa",
-      "city": "Goa",
-      "state": "Goa",
-      "zip": 4000221,
-      "phone_number": 6564354534,
-      "email": "sita@gmail.com"
-    },
-    {
-      "first_name": "mamta",
-      "last_name": "chaudhary",
-      "address": "pune",
-      "city": "pune",
-      "state": "mh",
-      "zip": "40040",
-      "phone_number": "400055",
-      "email": "priya@gmail.com",
-      "id": 5
-    },
-    {
       "first_name": "Shirin",
       "last_name": "CHouksi",
       "address": "Pune",

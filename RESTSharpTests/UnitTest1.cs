@@ -55,7 +55,7 @@ namespace RESTSharpTests
             Assert.AreEqual(9, dataResponse.Count);
             foreach (Contacts contact in dataResponse)
             {
-                System.Console.Write("First name: " + contact.first_name + " \nLast name: " + contact.last_name + " \nAddress: " + contact.address + " \nCity: " + contact.city + " \nState: "
+                System.Console.Write("\nFirst name: " + contact.first_name + " \nLast name: " + contact.last_name + " \nAddress: " + contact.address + " \nCity: " + contact.city + " \nState: "
                     + contact.state + " \nZip:" + contact.zip + " \nPhone Number:" + contact.phone_number + " \nEmail:" + contact.email);
             }
         }
@@ -88,7 +88,7 @@ namespace RESTSharpTests
             Assert.AreEqual(9, dataResponse.Count);
             foreach (Contacts contact in dataResponse)
             {
-                System.Console.Write("First name: " + contact.first_name + " \nLast name: " + contact.last_name + " \nAddress: " + contact.address + " \nCity: " + contact.city + " \nState: "
+                System.Console.Write("\nFirst name: " + contact.first_name + " \nLast name: " + contact.last_name + " \nAddress: " + contact.address + " \nCity: " + contact.city + " \nState: "
                     + contact.state + " \nZip:" + contact.zip + " \nPhone Number:" + contact.phone_number + " \nEmail:" + contact.email);
             }
         }
@@ -123,6 +123,26 @@ namespace RESTSharpTests
             Assert.AreEqual(8765432455, dataResponse.phone_number);
             Assert.AreEqual("renu@yahoo.com", dataResponse.email);
             System.Console.WriteLine(response.Content);
+        }
+
+        /// <summary>
+        /// Test Case to Delete Contact Details using JsonServer and RESTSharp
+        /// </summary>
+        [TestMethod]
+        public void GivenContactID_OnDelete_ShouldContactDetails()
+        {
+            RestRequest request = new RestRequest("/Contacts/5", Method.DELETE);
+            IRestResponse response = client.Execute(request);
+            Assert.AreEqual(response.StatusCode, HttpStatusCode.OK);
+            IRestResponse responses = GetContactList();
+            Assert.AreEqual(responses.StatusCode, HttpStatusCode.OK);
+            List<Contacts> dataResponse = JsonConvert.DeserializeObject<List<Contacts>>(responses.Content);
+            Assert.AreEqual(7, dataResponse.Count);
+            foreach (Contacts contact in dataResponse)
+            {
+                System.Console.Write("\nFirst name: " + contact.first_name + " \nLast name: " + contact.last_name + " \nAddress: " + contact.address + " \nCity: " + contact.city + " \nState: "
+                    + contact.state + " \nZip:" + contact.zip + " \nPhone Number:" + contact.phone_number + " \nEmail:" + contact.email);
+            }
         }
     }
 }
