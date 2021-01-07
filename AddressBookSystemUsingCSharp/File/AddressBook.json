@@ -23,14 +23,14 @@
       "email": "seema@gmail.com"
     },
     {
-      "first_name": "renu",
-      "last_name": "chaudhary",
-      "address": "pune",
-      "city": "pune",
-      "state": "mh",
-      "zip": "40040",
-      "phone_number": "400055",
-      "email": "renu@gmail.com",
+      "first_name": "Renu",
+      "last_name": "Kumar",
+      "address": "Nashik",
+      "city": "Nashik",
+      "state": "MH",
+      "zip": 400032,
+      "phone_number": 8765432455,
+      "email": "renu@yahoo.com",
       "id": 3
     },
     {

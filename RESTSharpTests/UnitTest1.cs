@@ -92,5 +92,37 @@ namespace RESTSharpTests
                     + contact.state + " \nZip:" + contact.zip + " \nPhone Number:" + contact.phone_number + " \nEmail:" + contact.email);
             }
         }
+
+        /// <summary>
+        /// Test Case to update Contacts using JsonServer and RESTSharp
+        /// </summary>
+        [TestMethod]
+        public void GivenContact_OnPut_ShouldUpdateContact()
+        {
+            RestRequest request = new RestRequest("/Contacts/3", Method.PUT);
+            JObject jObjectbody = new JObject();
+            jObjectbody.Add("first_name", "Renu");
+            jObjectbody.Add("last_name", "Kumar");
+            jObjectbody.Add("address", "Nashik");
+            jObjectbody.Add("city", "Nashik");
+            jObjectbody.Add("state", "MH");
+            jObjectbody.Add("zip", 400032);
+            jObjectbody.Add("phone_number", 8765432455);
+            jObjectbody.Add("email", "renu@yahoo.com");
+            request.AddParameter("application/json", jObjectbody, ParameterType.RequestBody);
+            client.Execute(request);
+            IRestResponse response = client.Execute(request);
+            Assert.AreEqual(response.StatusCode, HttpStatusCode.OK);
+            Contacts dataResponse = JsonConvert.DeserializeObject<Contacts>(response.Content);
+            Assert.AreEqual("Renu", dataResponse.first_name);
+            Assert.AreEqual("Kumar", dataResponse.last_name);
+            Assert.AreEqual("Nashik",dataResponse.address);
+            Assert.AreEqual("Nashik", dataResponse.city);
+            Assert.AreEqual("MH", dataResponse.state);
+            Assert.AreEqual(400032, dataResponse.zip);
+            Assert.AreEqual(8765432455, dataResponse.phone_number);
+            Assert.AreEqual("renu@yahoo.com", dataResponse.email);
+            System.Console.WriteLine(response.Content);
+        }
     }
 }
