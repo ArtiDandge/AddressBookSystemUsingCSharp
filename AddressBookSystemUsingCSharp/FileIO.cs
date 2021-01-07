@@ -97,7 +97,7 @@ namespace AddressBookSystemUsingCSharp
                 using (StreamWriter streamWriter = new StreamWriter(JSONFilePath))
                 using (JsonWriter writer = new JsonTextWriter(streamWriter))
                 {
-                    jsonSerializer.Serialize(writer, contacts);
+                  jsonSerializer.Serialize(writer, contacts);
                 }
                 Console.WriteLine("Writting Contacts to the JSON file is Complete !");
             }
